@@ -23,23 +23,37 @@
   <main>
     <section id="music" class="content-section">
       <h2>楽曲紹介</h2>
+
+      <!-- YouTube動画の埋め込み -->
+      <div class="video-container">
+        <iframe
+          src="https://www.youtube.com/embed/Obt0dliBo7o"
+          title="LAGORI Music Video"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+
       <ul>
-        <li><a href="https://youtu.be/xxxxx" target="_blank" rel="noopener noreferrer">『終末ロジック』 - YouTube</a></li>
+        <li><a href="https://youtu.be/Obt0dliBo7o" target="_blank" rel="noopener noreferrer">『終末ロジック』 - YouTube</a></li>
         <li><a href="https://nico.ms/xxxxx" target="_blank" rel="noopener noreferrer">『デジタルな孤独』 - ニコニコ動画</a></li>
       </ul>
     </section>
 
     <section id="profile" class="content-section hidden">
       <h2>プロフィール</h2>
-      <p>2023年活動開始。<br />
-      幼少期からクラシックピアノを学び、小学・中学時代に出会ったVOCALOID楽曲に衝撃を受け、独学で作曲を学び、インターネットの世界へ身を投じる。<br />
-      自身の経験から構築した独特の恋愛観を切なく表現した楽曲が多い。<br />
-      永遠の大学院生。</p>
+      <p>
+        2023年活動開始。<br />
+        幼少期からクラシックピアノを学び、小学・中学時代に出会ったVOCALOID楽曲に衝撃を受け、独学で作曲を学び、インターネットの世界へ身を投じる。<br />
+        自身の経験から構築した独特の恋愛観を切なく表現した楽曲が多い。<br />
+        永遠の大学院生。
+      </p>
     </section>
 
     <section id="contact" class="content-section hidden">
       <h2>コンタクト</h2>
-      <p>X: <a href="https://twitter.com/lagori" target="_blank" rel="noopener noreferrer">@lagori</a></p>
+      <p>X: <a href="https://twitter.com/LAGORI_xi" target="_blank" rel="noopener noreferrer">@LAGORI_xi</a></p>
     </section>
   </main>
 
@@ -53,7 +67,41 @@
     const links = sideMenu.querySelectorAll('a');
     const sections = document.querySelectorAll('.content-section');
 
-    menuBtn.addEventListener('click', () => {
+    function closeMenu() {
+      sideMenu.classList.remove('open');
+      sideMenu.setAttribute('aria-hidden', 'true');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    menuBtn.addEventListener('click', e => {
       const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
       if (expanded) {
-        sideMenu.classList.remove('open');
+        closeMenu();
+      } else {
+        sideMenu.classList.add('open');
+        sideMenu.setAttribute('aria-hidden', 'false');
+        menuBtn.setAttribute('aria-expanded', 'true');
+      }
+      e.stopPropagation(); // メニュー外クリック判定のために伝播を止める
+    });
+
+    links.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const targetId = link.getAttribute('data-section');
+        sections.forEach(section => section.classList.add('hidden'));
+        document.getElementById(targetId).classList.remove('hidden');
+        closeMenu();
+      });
+    });
+
+    // メニュー以外の場所をクリックしたら閉じる
+    document.addEventListener('click', e => {
+      const isInsideMenu = sideMenu.contains(e.target) || menuBtn.contains(e.target);
+      if (!isInsideMenu && sideMenu.classList.contains('open')) {
+        closeMenu();
+      }
+    });
+  </script>
+</body>
+</html>
