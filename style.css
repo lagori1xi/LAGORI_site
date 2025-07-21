@@ -1,13 +1,19 @@
+/* ベース設定 */
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: 'Helvetica', sans-serif;
   background-color: #0d0d0d;
-  color: #fff;
+  color: #ffffff;
   margin: 0;
   padding: 0;
   line-height: 1.6;
   overflow-x: hidden;
 }
 
+/* ヘッダー */
 header {
   background: #1a1a1a;
   padding: 1em;
@@ -34,15 +40,16 @@ header h1 {
   transform: translateY(-50%);
 }
 
+/* スライドインメニュー */
 .side-menu {
   position: fixed;
   top: 0;
   left: 0;
   width: 220px;
   height: 100vh;
-  background: #222;
+  background: #222222;
   padding-top: 3em;
-  box-shadow: 2px 0 5px rgba(0,0,0,0.7);
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.7);
   transform: translateX(-100%);
   transition: transform 0.3s ease;
   z-index: 1000;
@@ -55,8 +62,8 @@ header h1 {
 
 .side-menu ul {
   list-style: none;
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
 
 .side-menu li + li {
@@ -73,18 +80,15 @@ header h1 {
 
 .side-menu a:hover,
 .side-menu a:focus {
-  background: #333;
+  background: #333333;
   outline: none;
 }
 
+/* セクション */
 .content-section {
+  padding: 2em 1em;
   max-width: 800px;
   margin: 3em auto;
-  padding: 2em 1em;
-}
-
-.content-section.hidden {
-  display: none;
 }
 
 .content-section a {
@@ -92,13 +96,11 @@ header h1 {
   text-decoration: underline;
 }
 
-footer {
-  background: #1a1a1a;
-  text-align: center;
-  padding: 1em;
-  font-size: 0.9em;
+.content-section.hidden {
+  display: none;
 }
 
+/* YouTube埋め込み */
 .video-container {
   position: relative;
   width: 100%;
@@ -111,4 +113,12 @@ footer {
   width: 100%;
   height: 100%;
   border: none;
+}
+
+/* フッター */
+footer {
+  background: #1a1a1a;
+  text-align: center;
+  padding: 1em;
+  font-size: 0.9em;
 }
