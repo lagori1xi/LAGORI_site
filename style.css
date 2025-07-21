@@ -11,6 +11,7 @@ header {
   background: #1a1a1a;
   padding: 1em;
   text-align: center;
+  position: relative;
 }
 
 header h1 {
@@ -18,10 +19,30 @@ header h1 {
   font-size: 2em;
 }
 
-nav a {
+.menu-toggle {
+  background: none;
+  border: none;
   color: #66ccff;
-  margin: 0 1em;
+  font-size: 1.5em;
+  cursor: pointer;
+  position: absolute;
+  top: 1em;
+  right: 1em;
+}
+
+nav {
+  margin-top: 1em;
+}
+
+nav a {
+  display: block;
+  color: #66ccff;
+  margin: 0.5em 0;
   text-decoration: none;
+}
+
+nav.hidden {
+  display: none;
 }
 
 section {

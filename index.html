@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NeonVox Official</title>
+  <title>LAGORI Official</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <h1>NeonVox</h1>
-    <nav>
+    <h1>LAGORI</h1>
+    <button class="menu-toggle" onclick="toggleMenu()">☰ メニュー</button>
+    <nav id="menu" class="hidden">
       <a href="#music">楽曲</a>
       <a href="#profile">プロフィール</a>
       <a href="#contact">コンタクト</a>
@@ -27,18 +28,24 @@
 
     <section id="profile">
       <h2>プロフィール</h2>
-      <p>NeonVoxは2023年から活動中のボカロP。エレクトロと幻想をテーマに楽曲制作中。</p>
+      <p>LAGORIは2023年から活動中のボカロP。エレクトロと幻想をテーマに楽曲制作中。</p>
     </section>
 
     <section id="contact">
       <h2>コンタクト</h2>
-      <p>Twitter: <a href="https://twitter.com/neonvox" target="_blank">@neonvox</a></p>
-      <p>Email: <a href="mailto:contact@neonvox.com">contact@neonvox.com</a></p>
+      <p>X: <a href="https://twitter.com/lagori" target="_blank">@lagori</a></p>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 NeonVox</p>
+    <p>&copy; 2025 LAGORI</p>
   </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("menu");
+      menu.classList.toggle("hidden");
+    }
+  </script>
 </body>
 </html>
