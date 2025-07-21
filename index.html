@@ -8,32 +8,36 @@
 </head>
 <body>
   <header>
-    <button class="menu-toggle" onclick="toggleMenu()">☰ メニュー</button>
+    <button class="menu-toggle" aria-label="メニューを開く" onclick="toggleMenu()">☰</button>
     <h1>LAGORI</h1>
-    <nav id="menu" class="hidden">
-      <a href="#" onclick="showSection('music')">楽曲</a>
-      <a href="#" onclick="showSection('profile')">プロフィール</a>
-      <a href="#" onclick="showSection('contact')">コンタクト</a>
-    </nav>
   </header>
+
+  <nav id="menu" class="side-menu hidden" aria-hidden="true">
+    <a href="#" onclick="showSection('music')">楽曲</a>
+    <a href="#" onclick="showSection('profile')">プロフィール</a>
+    <a href="#" onclick="showSection('contact')">コンタクト</a>
+  </nav>
 
   <main>
     <section id="music" class="content-section">
       <h2>楽曲紹介</h2>
       <ul>
-        <li><a href="https://youtu.be/xxxxx" target="_blank">『終末ロジック』 - YouTube</a></li>
-        <li><a href="https://nico.ms/xxxxx" target="_blank">『デジタルな孤独』 - ニコニコ動画</a></li>
+        <li><a href="https://youtu.be/xxxxx" target="_blank" rel="noopener noreferrer">『終末ロジック』 - YouTube</a></li>
+        <li><a href="https://nico.ms/xxxxx" target="_blank" rel="noopener noreferrer">『デジタルな孤独』 - ニコニコ動画</a></li>
       </ul>
     </section>
 
     <section id="profile" class="content-section hidden">
       <h2>プロフィール</h2>
-      <p>LAGORIは2023年から活動中のボカロP。エレクトロと幻想をテーマに楽曲制作中。</p>
+      <p>2023年活動開始。<br />
+      幼少期からクラシックピアノを学び、小学・中学時代に出会ったVOCALOID楽曲に衝撃を受け、独学で作曲を学び、インターネットの世界へ身を投じる。<br />
+      自身の経験から構築した独特の恋愛観を切なく表現した楽曲が多い。<br />
+      永遠の大学院生。</p>
     </section>
 
     <section id="contact" class="content-section hidden">
       <h2>コンタクト</h2>
-      <p>X: <a href="https://twitter.com/lagori" target="_blank">@lagori</a></p>
+      <p>X: <a href="https://twitter.com/lagori" target="_blank" rel="noopener noreferrer">@lagori</a></p>
     </section>
   </main>
 
@@ -44,7 +48,14 @@
   <script>
     function toggleMenu() {
       const menu = document.getElementById("menu");
-      menu.classList.toggle("hidden");
+      const isHidden = menu.classList.contains("hidden");
+      if (isHidden) {
+        menu.classList.remove("hidden");
+        menu.setAttribute("aria-hidden", "false");
+      } else {
+        menu.classList.add("hidden");
+        menu.setAttribute("aria-hidden", "true");
+      }
     }
 
     function showSection(sectionId) {
@@ -53,9 +64,12 @@
         section.classList.add("hidden");
       });
       document.getElementById(sectionId).classList.remove("hidden");
-      document.getElementById("menu").classList.add("hidden");
+
+      // メニューを閉じる
+      const menu = document.getElementById("menu");
+      menu.classList.add("hidden");
+      menu.setAttribute("aria-hidden", "true");
     }
   </script>
 </body>
 </html>
-
