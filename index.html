@@ -24,7 +24,6 @@
     <section id="music" class="content-section">
       <h2>楽曲紹介</h2>
 
-      <!-- YouTube動画の埋め込み -->
       <div class="video-container">
         <iframe
           src="https://www.youtube.com/embed/Obt0dliBo7o"
@@ -82,7 +81,7 @@
         sideMenu.setAttribute('aria-hidden', 'false');
         menuBtn.setAttribute('aria-expanded', 'true');
       }
-      e.stopPropagation(); // メニュー外クリック判定のために伝播を止める
+      e.stopPropagation();
     });
 
     links.forEach(link => {
@@ -95,7 +94,6 @@
       });
     });
 
-    // メニュー以外の場所をクリックしたら閉じる
     document.addEventListener('click', e => {
       const isInsideMenu = sideMenu.contains(e.target) || menuBtn.contains(e.target);
       if (!isInsideMenu && sideMenu.classList.contains('open')) {
