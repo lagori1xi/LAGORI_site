@@ -1,4 +1,4 @@
-/* ベース設定 */
+/* 全体設定 */
 * {
   box-sizing: border-box;
 }
@@ -26,6 +26,7 @@ header {
 header h1 {
   margin: 0;
   font-size: 2em;
+  color: #ffcc00;
 }
 
 #menuBtn {
@@ -40,7 +41,7 @@ header h1 {
   transform: translateY(-50%);
 }
 
-/* スライドインメニュー */
+/* サイドメニュー */
 .side-menu {
   position: fixed;
   top: 0;
@@ -121,4 +122,23 @@ footer {
   text-align: center;
   padding: 1em;
   font-size: 0.9em;
+  color: #ffcc00;
+}
+
+.footer-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  margin-bottom: 0.5em;
+}
+
+.footer-icons a svg {
+  transition: transform 0.2s;
+  width: 24px;
+  height: 24px;
+  fill: #ffcc00;
+}
+
+.footer-icons a:hover svg {
+  transform: scale(1.2);
 }
