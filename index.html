@@ -11,14 +11,14 @@
     <h1>LAGORI</h1>
     <button class="menu-toggle" onclick="toggleMenu()">☰ メニュー</button>
     <nav id="menu" class="hidden">
-      <a href="#music">楽曲</a>
-      <a href="#profile">プロフィール</a>
-      <a href="#contact">コンタクト</a>
+      <a href="#" onclick="showSection('music')">楽曲</a>
+      <a href="#" onclick="showSection('profile')">プロフィール</a>
+      <a href="#" onclick="showSection('contact')">コンタクト</a>
     </nav>
   </header>
 
   <main>
-    <section id="music">
+    <section id="music" class="content-section">
       <h2>楽曲紹介</h2>
       <ul>
         <li><a href="https://youtu.be/xxxxx" target="_blank">『終末ロジック』 - YouTube</a></li>
@@ -26,12 +26,12 @@
       </ul>
     </section>
 
-    <section id="profile">
+    <section id="profile" class="content-section hidden">
       <h2>プロフィール</h2>
       <p>LAGORIは2023年から活動中のボカロP。エレクトロと幻想をテーマに楽曲制作中。</p>
     </section>
 
-    <section id="contact">
+    <section id="contact" class="content-section hidden">
       <h2>コンタクト</h2>
       <p>X: <a href="https://twitter.com/lagori" target="_blank">@lagori</a></p>
     </section>
@@ -45,6 +45,18 @@
     function toggleMenu() {
       const menu = document.getElementById("menu");
       menu.classList.toggle("hidden");
+    }
+
+    function showSection(sectionId) {
+      const sections = document.querySelectorAll(".content-section");
+      sections.forEach(section => {
+        if (section.id === sectionId) {
+          section.classList.remove("hidden");
+        } else {
+          section.classList.add("hidden");
+        }
+      });
+      document.getElementById("menu").classList.add("hidden");
     }
   </script>
 </body>

@@ -10,33 +10,34 @@ body {
 header {
   background: #1a1a1a;
   padding: 1em;
-  text-align: center;
   position: relative;
 }
 
 header h1 {
   margin: 0;
   font-size: 2em;
+  text-align: center;
 }
 
 .menu-toggle {
   background: none;
   border: none;
-  color: #66ccff;
+  color: #ffcc00;
   font-size: 1.5em;
   cursor: pointer;
   position: absolute;
   top: 1em;
-  right: 1em;
+  left: 1em;
 }
 
 nav {
   margin-top: 1em;
+  text-align: center;
 }
 
 nav a {
   display: block;
-  color: #66ccff;
+  color: #ffcc00;
   margin: 0.5em 0;
   text-decoration: none;
 }
@@ -45,10 +46,19 @@ nav.hidden {
   display: none;
 }
 
-section {
+.content-section {
   padding: 2em;
   max-width: 800px;
   margin: auto;
+}
+
+.content-section a {
+  color: #ffcc00;
+  text-decoration: underline;
+}
+
+.content-section.hidden {
+  display: none;
 }
 
 footer {
