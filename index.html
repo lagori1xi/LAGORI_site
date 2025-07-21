@@ -8,15 +8,15 @@
 </head>
 <body>
   <header>
-    <button type="button" class="menu-toggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="side-menu" onclick="toggleMenu()">☰</button>
+    <button id="menuBtn" type="button" aria-label="メニューを開く" aria-expanded="false">☰</button>
     <h1>LAGORI</h1>
   </header>
 
-  <nav id="side-menu" class="side-menu" aria-hidden="true">
+  <nav id="sideMenu" class="side-menu" aria-hidden="true">
     <ul>
-      <li><a href="#" onclick="showSection('music'); return false;">楽曲</a></li>
-      <li><a href="#" onclick="showSection('profile'); return false;">プロフィール</a></li>
-      <li><a href="#" onclick="showSection('contact'); return false;">コンタクト</a></li>
+      <li><a href="#" data-section="music">楽曲</a></li>
+      <li><a href="#" data-section="profile">プロフィール</a></li>
+      <li><a href="#" data-section="contact">コンタクト</a></li>
     </ul>
   </nav>
 
@@ -48,31 +48,12 @@
   </footer>
 
   <script>
-    const menuButton = document.querySelector('.menu-toggle');
-    const sideMenu = document.getElementById('side-menu');
+    const menuBtn = document.getElementById('menuBtn');
+    const sideMenu = document.getElementById('sideMenu');
+    const links = sideMenu.querySelectorAll('a');
+    const sections = document.querySelectorAll('.content-section');
 
-    function toggleMenu() {
-      const isOpen = sideMenu.classList.contains('open');
-      if (isOpen) {
+    menuBtn.addEventListener('click', () => {
+      const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
+      if (expanded) {
         sideMenu.classList.remove('open');
-        sideMenu.setAttribute('aria-hidden', 'true');
-        menuButton.setAttribute('aria-expanded', 'false');
-      } else {
-        sideMenu.classList.add('open');
-        sideMenu.setAttribute('aria-hidden', 'false');
-        menuButton.setAttribute('aria-expanded', 'true');
-      }
-    }
-
-    function showSection(id) {
-      document.querySelectorAll('.content-section').forEach(section => {
-        section.classList.add('hidden');
-      });
-      document.getElementById(id).classList.remove('hidden');
-      sideMenu.classList.remove('open');
-      sideMenu.setAttribute('aria-hidden', 'true');
-      menuButton.setAttribute('aria-expanded', 'false');
-    }
-  </script>
-</body>
-</html>
